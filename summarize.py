@@ -25,7 +25,6 @@ if __name__ == "__main__":
     #for s in scrapers:
     #    s.get_scrape_data()
     #    s.close()
-    #s = WillhemScraper()
-    s = HomeqScraper()
+    s = WillhemScraper()
     s.get_scrape_data()
     s.close()
