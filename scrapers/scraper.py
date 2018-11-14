@@ -14,6 +14,5 @@ class Scraper(ABC):
     def get_scrape_data(self):
         pass
 
-    @abstractmethod
     def close(self):
-        pass
+        self.driver.close()

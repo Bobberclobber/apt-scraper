@@ -42,6 +42,3 @@ class HomeqScraper(Scraper):
             except:
                 errors.append(elem.text)
         return scrape_data, errors
-
-    def close(self):
-        self.driver.close()
