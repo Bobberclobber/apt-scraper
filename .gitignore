@@ -1,2 +1,8 @@
 # Vim swap files
 *.swp
+
+# PyCache
+**/__pycache__/*
+
+# Virtual environment
+venv/*
