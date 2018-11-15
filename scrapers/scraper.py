@@ -2,6 +2,13 @@ from selenium import webdriver
 from abc import ABC, abstractmethod
 
 
+ROOMS = "rooms"
+AREA = "area"
+RENT = "rent"
+RESERVED = "reserved"
+LINK = "link"
+
+
 class Scraper(ABC):
     def __init__(self):
         # Run Chrome silently

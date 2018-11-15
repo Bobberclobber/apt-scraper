@@ -1,3 +1,5 @@
+#!./venv/bin/python
+
 import sys
 import inspect
 import importlib

@@ -1,5 +1,5 @@
 from selenium import webdriver
-from scrapers.scraper import Scraper
+from scrapers.scraper import Scraper, ROOMS, AREA, RENT, RESERVED, LINK
 
 
 class HomeqScraper(Scraper):
@@ -13,14 +13,14 @@ class HomeqScraper(Scraper):
             reserved = True
             splits = splits[1:]
         address = splits[0].strip().split()
-        street_name = " ".join(address[:-1])
-        street_nr = address[-1]
-        city = splits[1].strip()
+        street_name = " ".join(address[:-1]).capitalize()
+        street_nr = address[-1].upper()
+        city = splits[1].strip().capitalize()
         apt_spec_list = splits[2].strip().split()
-        rooms = float(apt_spec_list[0])
-        area = float(apt_spec_list[2])
-        rent = float(apt_spec_list[4])
-        apt_spec = {"rooms": rooms, "area": area, "rent": rent, "reserved": reserved}
+        apt_spec = {RESERVED: reserved}
+        apt_spec[ROOMS] = float(apt_spec_list[0])
+        apt_spec[AREA] = float(apt_spec_list[2])
+        apt_spec[RENT] = float(apt_spec_list[4])
         return city, street_name, street_nr, apt_spec
 
     def get_scrape_data(self):
@@ -38,7 +38,8 @@ class HomeqScraper(Scraper):
                 if street_name not in scrape_data[city]:
                     scrape_data[city][street_name] = {}
                 scrape_data[city][street_name][street_nr] = apt_spec
-                scrape_data[city][street_name][street_nr]["link"] = hyper_link
+                scrape_data[city][street_name][street_nr][LINK] = hyper_link
             except:
-                errors.append(elem.text)
+                if elem.text:
+                    errors.append(elem.text)
         return scrape_data, errors
