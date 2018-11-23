@@ -1,8 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: /index.html
-    destination: /var/www/html/
+  - source: /requirements.txt
+    destination: /home/ec2-user/apt_scraper/
+  - source: /apt_scraper/*
+    destination: /home/ec2-user/apt_scraper/
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
