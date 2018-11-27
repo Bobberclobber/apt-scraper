@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Install Apache HTTP server
-yum install -y httpd
-# Install Python packages
-source /home/ec2-user/apt_scraper/venv/bin/activate
-pip install -r /home/ec2-user/apt_scraper/requirements.txt
